@@ -1,0 +1,81 @@
+/* Стили для страницы уязвимостей */
+.vulnerabilities {
+    padding: 20px 0;
+}
+
+.vulnerabilities h2 {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+    color: #2c3e50;
+    text-align: center;
+}
+
+.vulnerability-list {
+    list-style: none;
+    padding: 0;
+}
+
+.vulnerability-list li {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+.vulnerability-list li strong {
+    display: block;
+    font-size: 1.2em;
+    color: #2c3e50;
+    margin-bottom: 5px;
+}
+
+.vulnerability-list li p {
+    font-size: 0.9em;
+    color: #666;
+}
+
+.recommendations {
+    margin-top: 30px;
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.recommendations h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: #2c3e50;
+}
+
+.recommendations p {
+    font-size: 0.9em;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.recommendations ul {
+    list-style: disc;
+    padding-left: 20px;
+}
+
+.recommendations ul li {
+    font-size: 0.9em;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+@media (max-width: 768px) {
+    .vulnerabilities h2 {
+        font-size: 1.5em;
+    }
+
+    .vulnerability-list li {
+        padding: 10px;
+    }
+
+    .recommendations {
+        padding: 10px;
+    }
+}
