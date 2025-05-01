@@ -7,11 +7,12 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/cards.css">
+    <link rel="stylesheet" href="css/effects.css">
 </head>
 <body>
-    <header class="main-header">
+    <header class="main-header parallax">
         <div class="container">
-            <h1>Инструменты для тестирования</h1>
+            <h1>Инструменты для анализа</h1>
             <nav>
                 <a href="index.html">Главная</a>
                 <a href="protocols.html">Протоколы</a>
@@ -24,44 +25,73 @@
     </header>
 
     <main class="container">
-        <section class="intro">
-            <h2>Популярные инструменты для анализа Wi-Fi</h2>
-            <p>Программы для проверки уязвимостей и взлома (в образовательных целях).</p>
+        <section class="intro animated fadeIn">
+            <h2>Инструменты для тестирования Wi-Fi</h2>
+            <p>Используйте эти программы для анализа безопасности сетей (только с разрешения).</p>
         </section>
 
         <section class="cards">
-            <!-- Инструмент 1 -->
-            <div class="card">
-                <img src="images/aircrack-logo.png" alt="Aircrack-ng">
-                <h3>Aircrack-ng</h3>
-                <p>Набор инструментов для взлома WEP/WPA-PSK.</p>
-                <a href="https://www.aircrack-ng.org/" target="_blank">Скачать →</a>
+            <div class="card animated slideIn flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="images/aircrack-logo.png" alt="Aircrack-ng">
+                        <h3>Aircrack-ng</h3>
+                        <p>Взлом WEP/WPA-PSK.</p>
+                    </div>
+                    <div class="flip-card-back">
+                        <p>Анализирует пакеты и подбирает ключи.</p>
+                        <a href="https://www.aircrack-ng.org/" target="_blank" class="btn">Скачать →</a>
+                    </div>
+                </div>
             </div>
-
-            <!-- Инструмент 2 -->
-            <div class="card">
-                <img src="images/wireshark-logo.png" alt="Wireshark">
-                <h3>Wireshark</h3>
-                <p>Анализатор трафика для выявления утечек данных.</p>
-                <a href="https://www.wireshark.org/" target="_blank">Скачать →</a>
+            <div class="card animated slideIn flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="images/wireshark-logo.png" alt="Wireshark">
+                        <h3>Wireshark</h3>
+                        <p>Анализ трафика.</p>
+                    </div>
+                    <div class="flip-card-back">
+                        <p>Выявляет утечки и аномалии в сети.</p>
+                        <a href="https://www.wireshark.org/" target="_blank" class="btn">Скачать →</a>
+                    </div>
+                </div>
             </div>
-
-            <!-- Инструмент 3 -->
-            <div class="card">
-                <img src="images/reaver-logo.png" alt="Reaver">
-                <h3>Reaver</h3>
-                <p>Взлом WPS для уязвимых роутеров.</p>
-                <a href="https://github.com/t6x/reaver-wps-fork-t6x" target="_blank">Скачать →</a>
+            <div class="card animated slideIn flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="images/reaver-logo.png" alt="Reaver">
+                        <h3>Reaver</h3>
+                        <p>Взлом WPS.</p>
+                    </div>
+                    <div class="flip-card-back">
+                        <p>Перебирает PIN-коды WPS.</p>
+                        <a href="https://github.com/t6x/reaver-wps-fork-t6x" target="_blank" class="btn">Скачать →</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card animated slideIn flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <h3>Kismet</h3>
+                        <p>Обнаружение сетей.</p>
+                    </div>
+                    <div class="flip-card-back">
+                        <p>Мониторит Wi-Fi и Bluetooth устройства.</p>
+                        <a href="https://www.kismetwireless.net/" target="_blank" class="btn">Скачать →</a>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <section class="warning">
-            <p>⚠️ Используйте эти инструменты только на своих сетях или с разрешения владельца.</p>
+        <section class="warning animated fadeIn">
+            <p>⚠️ Используйте инструменты только на своих сетях или с разрешения владельца.</p>
         </section>
     </main>
 
     <footer>
-        <p>© 2025 Wi-Fi Security Project</p>
+        <p>© 2025 Wi-Fi Security Project | <a href="contact.html">Свяжитесь с нами</a></p>
     </footer>
+    <script src="js/script.js"></script>
 </body>
 </html>

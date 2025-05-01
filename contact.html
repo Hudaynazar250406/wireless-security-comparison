@@ -7,9 +7,10 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/contact.css">
+    <link rel="stylesheet" href="css/effects.css">
 </head>
 <body>
-    <header class="main-header">
+    <header class="main-header parallax">
         <div class="container">
             <h1>Контакты</h1>
             <nav>
@@ -18,29 +19,45 @@
                 <a href="vulnerabilities.html">Уязвимости</a>
                 <a href="tools.html">Инструменты</a>
                 <a href="team.html">Команда</a>
-                <a href="contact.html">Контакты</a>
+                <a href="contact.html" class="active">Контакты</a>
             </nav>
         </div>
     </header>
 
     <main class="container">
-        <section class="contact-info">
+        <section class="intro animated fadeIn">
             <h2>Свяжитесь с нами</h2>
-            <div class="contact-member">
-                <p><strong>Худайназар Мерданов</strong></p>
+            <p>Задавайте вопросы или делитесь идеями по улучшению проекта!</p>
+        </section>
+
+        <section class="contact-info cards">
+            <div class="card animated slideIn">
+                <h3>Худайназар Мерданов</h3>
                 <p>Telegram: <a href="https://t.me/Hnazarchik" target="_blank">@Hnazarchik</a></p>
-                <p>Email: <a href="mailto:merdanowhudaynazar7@mail.ru">merdanowhudaynazar7@mail.ru</a></p>
+                <p>Email: <a href="mailto:hudaynazar@example.com">hudaynazar@example.com</a></p>
             </div>
-            <div class="contact-member">
-                <p><strong>Михаил Кошляк</strong></p>
+            <div class="card animated slideIn">
+                <h3>Михаил Кошляк</h3>
                 <p>Telegram: <a href="https://t.me/p0packa" target="_blank">@p0packa</a></p>
-                <p>Студент, направление ИБ</p>
+                <p>Email: <a href="mailto:mikhail@example.com">mikhail@example.com</a></p>
+            </div>
+        </section>
+
+        <section class="faq animated fadeIn">
+            <h2>Часто задаваемые вопросы</h2>
+            <div class="faq-item">
+                <h3>Можно ли использовать инструменты на чужих сетях?</h3>
+                <p>Нет, это незаконно. Используйте инструменты только на своих сетях или с разрешения владельца.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Как защитить мою Wi-Fi сеть?</h3>
+                <p>Используйте WPA3, сложные пароли, отключите WPS и обновляйте прошивку.</p>
             </div>
         </section>
     </main>
 
     <footer>
-        <p>© 2025 Wi-Fi Security Project</p>
+        <p>© 2025 Wi-Fi Security Project | <a href="contact.html">Свяжитесь с нами</a></p>
     </footer>
     <script src="js/script.js"></script>
 </body>

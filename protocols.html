@@ -6,31 +6,91 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/table.css">
+    <link rel="stylesheet" href="css/effects.css">
 </head>
 <body>
-    <header class="main-header">
-        <!-- Меню (аналогично index.html) -->
+    <header class="main-header parallax">
+        <div class="container">
+            <h1>Протоколы Wi-Fi</h1>
+            <nav>
+                <a href="index.html">Главная</a>
+                <a href="protocols.html" class="active">Протоколы</a>
+                <a href="vulnerabilities.html">Уязвимости</a>
+                <a href="tools.html">Инструменты</a>
+                <a href="team.html">Команда</a>
+                <a href="contact.html">Контакты</a>
+            </nav>
+        </div>
     </header>
 
     <main class="container">
-        <h2>Сравнение протоколов</h2>
-        <table class="protocol-table">
+        <section class="intro animated fadeIn">
+            <h2>Сравнение протоколов Wi-Fi</h2>
+            <p>Оцените эволюцию протоколов Wi-Fi по безопасности, шифрованию и устойчивости к атакам.</p>
+        </section>
+
+        <table class="protocol-table animated fadeIn">
             <tr>
                 <th>Протокол</th>
                 <th>Год</th>
+                <th>Шифрование</th>
                 <th>Безопасность</th>
+                <th>Описание</th>
             </tr>
             <tr id="wep">
                 <td>WEP</td>
                 <td>1997</td>
+                <td>RC4</td>
                 <td>❌ Очень низкая</td>
+                <td>Устаревший протокол, уязвимый к FMS и KoreK атакам.</td>
+            </tr>
+            <tr id="wpa">
+                <td>WPA</td>
+                <td>2003</td>
+                <td>TKIP</td>
+                <td>⚠️ Средняя</td>
+                <td>Переходный стандарт, уязвимый к KRACK и атакам на TKIP.</td>
+            </tr>
+            <tr id="wpa2">
+                <td>WPA2</td>
+                <td>2004</td>
+                <td>AES-CCMP</td>
+                <td>✅ Хорошая</td>
+                <td>Надёжный стандарт, но уязвим к PMKID и KRACK без патчей.</td>
             </tr>
             <tr id="wpa3">
                 <td>WPA3</td>
                 <td>2018</td>
+                <td>SAE/AES</td>
                 <td>✅ Высокая</td>
+                <td>Современный протокол с защитой от оффлайн атак и SAE.</td>
             </tr>
         </table>
+
+        <section class="protocol-details animated slideIn">
+            <h2>Подробности</h2>
+            <div class="detail-card" id="wep-details">
+                <h3>WEP</h3>
+                <p>Слабый инициализационный вектор (IV) и повторное использование ключей делают WEP уязвимым. Инструменты вроде Aircrack-ng могут взломать сеть за минуты.</p>
+            </div>
+            <div class="detail-card" id="wpa-details">
+                <h3>WPA</h3>
+                <p>Использует TKIP для совместимости с WEP-устройствами, но это снижает безопасность. Уязвим к атакам на 4-стороннее рукопожатие.</p>
+            </div>
+            <div class="detail-card" id="wpa2-details">
+                <h3>WPA2</h3>
+                <p>Стандарт с AES, но уязвимости вроде KRACK и PMKID требуют обновлений прошивки.</p>
+            </div>
+            <div class="detail-card" id="wpa3-details">
+                <h3>WPA3</h3>
+                <p>Внедряет Simultaneous Authentication of Equals (SAE) и защиту от подбора паролей.</p>
+            </div>
+        </section>
     </main>
+
+    <footer>
+        <p>© 2025 Wi-Fi Security Project | <a href="contact.html">Свяжитесь с нами</a></p>
+    </footer>
+    <script src="js/script.js"></script>
 </body>
 </html>

@@ -7,9 +7,10 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/team.css">
+    <link rel="stylesheet" href="css/effects.css">
 </head>
 <body>
-    <header class="main-header">
+    <header class="main-header parallax">
         <div class="container">
             <h1>Наша команда</h1>
             <nav>
@@ -17,28 +18,48 @@
                 <a href="protocols.html">Протоколы</a>
                 <a href="vulnerabilities.html">Уязвимости</a>
                 <a href="tools.html">Инструменты</a>
-                <a href="team.html">Команда</a>
+                <a href="team.html" class="active">Команда</a>
                 <a href="contact.html">Контакты</a>
             </nav>
         </div>
     </header>
 
     <main class="container">
-        <section class="team">
-            <h2>Команда проекта</h2>
-            <div class="team-member">
-                <h3>Худайназар Мерданов</h3>
-                <p>Студент, направление ИБ</p>
+        <section class="intro animated fadeIn">
+            <h2>Познакомьтесь с нами</h2>
+            <p>Наша команда состоит из студентов, увлечённых кибербезопасностью.</p>
+        </section>
+
+        <section class="team cards">
+            <div class="card animated slideIn flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <h3>Худайназар Мерданов</h3>
+                        <p>Студент, направление ИБ</p>
+                    </div>
+                    <div class="flip-card-back">
+                        <p>Специалист по анализу уязвимостей Wi-Fi.</p>
+                        <a href="https://t.me/Hnazarchik" target="_blank" class="btn">Telegram</a>
+                    </div>
+                </div>
             </div>
-            <div class="team-member">
-                <h3>Михаил Кошляк</h3>
-                <p>Студент, направление ИБ</p>
+            <div class="card animated slideIn flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <h3>Михаил Кошляк</h3>
+                        <p>Студент, направление ИБ</p>
+                    </div>
+                    <div class="flip-card-back">
+                        <p>Эксперт по инструментам тестирования сетей.</p>
+                        <a href="https://t.me/p0packa" target="_blank" class="btn">Telegram</a>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
 
     <footer>
-        <p>© 2025 Wi-Fi Security Project</p>
+        <p>© 2025 Wi-Fi Security Project | <a href="contact.html">Свяжитесь с нами</a></p>
     </footer>
     <script src="js/script.js"></script>
 </body>

@@ -1,53 +1,36 @@
-document.addEventListener('DOMContentLoaded', () => {
-    // Smooth scrolling for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', (e) => {
-            e.preventDefault();
-            const targetId = anchor.getAttribute('href').substring(1);
-            const targetElement = document.getElementById(targetId);
-            if (targetElement) {
-                targetElement.scrollIntoView({ behavior: 'smooth' });
-            }
+// Smooth scrolling for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
         });
     });
+});
 
-    // Highlight active navigation link
-    const navLinks = document.querySelectorAll('.main-header nav a');
-    const currentPath = window.location.pathname.split('/').pop() || 'index.html';
-    navLinks.forEach(link => {
-        if (link.getAttribute('href') === currentPath) {
-            link.classList.add('active');
-        } else {
-            link.classList.remove('active');
+// Scroll-triggered animations
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('animated', 'fadeIn');
         }
     });
+}, { threshold: 0.2 });
 
-    // Toggle for additional content (e.g., "Show More" button)
-    const toggleButtons = document.querySelectorAll('.toggle-content');
-    toggleButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const targetId = button.getAttribute('data-target');
-            const targetContent = document.getElementById(targetId);
-            if (targetContent) {
-                targetContent.classList.toggle('hidden');
-                button.textContent = targetContent.classList.contains('hidden') ? 'Show More' : 'Show Less';
-            }
-        });
+document.querySelectorAll('.card, .intro, .stats, .recommendations, .faq').forEach(element => {
+    observer.observe(element);
+});
+
+// Tooltip functionality
+document.querySelectorAll('.card').forEach(card => {
+    card.addEventListener('mouseenter', () => {
+        const tooltip = document.createElement('div');
+        tooltip.className = 'tooltip';
+        tooltip.textContent = 'Нажмите для подробностей!';
+        card.appendChild(tooltip);
     });
-
-    // Basic form validation (for future contact form)
-    const contactForm = document.querySelector('form');
-    if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const email = contactForm.querySelector('input[type="email"]');
-            const message = contactForm.querySelector('textarea');
-            if (email && message && email.value.trim() && message.value.trim()) {
-                alert('Form submitted successfully!');
-                contactForm.reset();
-            } else {
-                alert('Please fill in all required fields.');
-            }
-        });
-    }
+    card.addEventListener('mouseleave', () => {
+        const tooltip = card.querySelector('.tooltip');
+        if (tooltip) tooltip.remove();
+    });
 });
