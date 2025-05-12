@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wi-Fi Security | Отчет</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/table.css">
+    <link rel="stylesheet" href="css/effects.css">
+</head>
+<body>
+    <!-- Шапка -->
+    <header class="main-header parallax">
+        <div class="container">
+            <h1>Отчет по учебной практике</h1>
+            <nav>
+                <a href="index.html">Главная</a>
+                <a href="protocols.html">Протоколы</a>
+                <a href="vulnerabilities.html">Уязвимости</a>
+                <a href="tools.html">Инструменты</a>
+                <a href="team.html">Команда</a>
+                <a href="contact.html">Контакты</a>
+                <a href="report.html" class="active">Отчет</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Основной контент -->
+    <main class="container">
+        <section class="intro animated fadeIn">
+            <h2>Отчет по учебной практике</h2>
+            <p>
+                <strong>Выполнил:</strong> Мерданов Х.М., студент группы 241-352<br>
+                <strong>Руководитель:</strong> Кесель С.А., к.т.н., доцент кафедры «Информационная безопасность»<br>
+                <strong>Место проведения:</strong> Московский Политехнический Университет, 2025
+            </p>
+        </section>
+
+        <!-- Введение отчета -->
+        <section class="animated fadeIn">
+            <h3>Введение</h3>
+            <p>
+                Wi-Fi-сети являются неотъемлемой частью современной жизни — как в домашних условиях, так и в корпоративной среде. Однако беспроводная природа передачи данных делает их уязвимыми для атак. В ходе эволюции Wi-Fi были разработаны различные протоколы защиты: WEP, WPA, WPA2 и WPA3. Каждый из них имеет свои особенности и уязвимости. Настоящее исследование направлено на практическое сравнение методов защиты Wi-Fi-сетей.
+            </p>
+        </section>
+
+        <!-- Цель и задачи -->
+        <section class="animated fadeIn">
+            <h3>Цель и задачи исследования</h3>
+            <p><strong>Цель:</strong> Исследовать эффективность различных методов защиты беспроводных сетей Wi-Fi на основе практического анализа и сравнения протоколов WEP, WPA2 и WPA3.</p>
+            <p><strong>Задачи:</strong></p>
+            <ul>
+                <li>Настроить тестовый стенд (машина Kali Linux, Wi-Fi роутер с возможностью смены протоколов WEP/WPA2/WPA3).</li>
+                <li>Провести атаки:
+                    <ul>
+                        <li>Взлом сети с WEP-защитой с помощью инструмента aircrack-ng;</li>
+                        <li>Брутфорс-атака на сеть с WPA2-защитой;</li>
+                        <li>Проверка WPA3 на известные уязвимости.</li>
+                    </ul>
+                </li>
+                <li>Сравнить результаты: время взлома, сложность, устойчивость каждого протокола.</li>
+                <li>Разработать рекомендации по безопасной настройке Wi-Fi-сетей.</li>
+            </ul>
+        </section>
+
+        <!-- Настройка тестового стенда -->
+        <section class="animated fadeIn">
+            <h3>Настройка тестового стенда</h3>
+            <p>
+                Для исследования был организован тестовый стенд, включающий атакующую машину с Kali Linux, Wi-Fi маршрутизатор и клиентское устройство. Цель стенда — эмуляция реальной беспроводной сети с различными методами защиты.
+            </p>
+            <p><strong>Компоненты стенда:</strong></p>
+            <ul>
+                <li><strong>Атакующая машина:</strong> Ноутбук с Kali Linux (последняя версия).</li>
+                <li><strong>Сетевой адаптер:</strong> TP-Link TL-WN7200ND (поддержка мониторингового режима).</li>
+                <li><strong>Wi-Fi роутер:</strong> Модель с поддержкой WEP, WPA2-PSK, WPA3-SAE.</li>
+                <li><strong>Клиентское устройство:</strong> Смартфон или ноутбук для генерации трафика.</li>
+            </ul>
+            <p><strong>Инструменты:</strong></p>
+            <ul>
+                <li>aircrack-ng — для атак на WEP/WPA2.</li>
+                <li>airodump-ng, aireplay-ng — для сканирования и деаутентификации.</li>
+                <li>hashcat — для брутфорса WPA2.</li>
+                <li>Dragonblood — для тестирования WPA3.</li>
+            </ul>
+            <p>
+                На этапе подготовки активирован интерфейс wlan0 (см. Рис. 1).
+            </p>
+            <img src="images/image2.png" alt="Конфигурация сетевого интерфейса">
+            <p>Рис. 1. Конфигурация сетевого интерфейса на Kali Linux</p>
+        </section>
+
+        <!-- Сравнительный анализ -->
+        <section class="animated fadeIn">
+            <h3>Сравнительный анализ методов защиты Wi-Fi</h3>
+            <p>
+                Практические атаки были проведены для оценки стойкости протоколов WEP, WPA2 и WPA3.
+            </p>
+
+            <!-- WEP -->
+            <h4>WEP</h4>
+            <p>
+                <strong>Описание:</strong> WEP использует RC4 и статичный IV, что делает его уязвимым. Взлом возможен путем захвата пакетов и восстановления ключа.
+            </p>
+            <p><strong>Шаги атаки:</strong></p>
+            <ol>
+                <li>Включение мониторинга: <code>airmon-ng start wlan0</code></li>
+                <li>Поиск сети: <code>airodump-ng wlan0mon</code></li>
+                <li>Перехват пакетов: <code>airodump-ng -c 9 --bssid F8:C0:91:12:F7:9B -w wep_cap wlan0mon</code></li>
+                <li>Инъекция ARP: <code>aireplay-ng -9 -b F8:C0:91:12:F7:9B -h MAC wlan0mon</code></li>
+                <li>Подбор ключа: <code>aircrack-ng wep_cap*.cap</code></li>
+            </ol>
+            <p><strong>Результаты:</strong></p>
+            <ul>
+                <li>Время взлома: 10 минут</li>
+                <li>Количество пакетов: 5560</li>
+                <li>Размер ключа: 54 бита</li>
+                <li>Ключ: [31:30:30:31:30] (ASCII: 10010)</li>
+            </ul>
+            <img src="images/image3.png" alt="Скриншот aircrack-ng">
+            <p>Рис. 2. Скриншот aircrack-ng — ключ найден</p>
+
+            <!-- WPA2-PSK -->
+            <h4>WPA2-PSK</h4>
+            <p>
+                <strong>Описание:</strong> WPA2 использует AES и 4-way handshake. Уязвим к брутфорсу при слабых паролях.
+            </p>
+            <p><strong>Шаги атаки:</strong></p>
+            <ol>
+                <li>Мониторинг сети: <code>airodump-ng wlan0mon</code></li>
+                <li>Захват хендшейка: <code>airodump-ng -c 9 --bssid F8:C0:91:12:F7:9B -w wpa2_cap wlan0mon</code></li>
+                <li>Подбор пароля: <code>aircrack-ng -w custom.txt -b F8:C0:91:12:F7:9B wpa2_cap-01.cap</code></li>
+            </ol>
+            <p><strong>Результаты:</strong></p>
+            <ul>
+                <li>Время захвата хендшейка: 50 минут</li>
+                <li>Размер словаря: 200 паролей</li>
+                <li>Время подбора: 0 секунд</li>
+                <li>Пароль: 25042006</li>
+            </ul>
+            <img src="images/image7.png" alt="Скриншот WPA2 атаки">
+            <p>Рис. 3. Скриншот атаки на WPA2</p>
+
+            <!-- WPA3-SAE -->
+            <h4>WPA3-SAE</h4>
+            <p>
+                <strong>Описание:</strong> WPA3 использует SAE, устойчивый к оффлайн-брутфорсу. Атаки возможны при ошибках конфигурации.
+            </p>
+            <p><strong>Шаги атаки:</strong></p>
+            <ol>
+                <li>Сканирование сети: <code>airodump-ng wlan0mon</code></li>
+                <li>Проверка WPA3: анализ поля "RSN".</li>
+                <li>Попытка подключения: проверка совместимости с WPA2.</li>
+                <li>Тест Dragonblood: <code>python3 dragontime.py ...</code></li>
+            </ol>
+            <p><strong>Результаты:</strong> Взлом не удался.</p>
+        </section>
+
+        <!-- Сводная таблица -->
+        <section class="animated fadeIn">
+            <h3>Сводная таблица результатов</h3>
+            <table class="protocol-table">
+                <thead>
+                    <tr>
+                        <th>Протокол</th>
+                        <th>Успешность взлома</th>
+                        <th>Время</th>
+                        <th>Сложность</th>
+                        <th>Особенности / Проблемы</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>WEP</td>
+                        <td>Да</td>
+                        <td>10 мин</td>
+                        <td>Низкая</td>
+                        <td>Устаревший, легко взламывается</td>
+                    </tr>
+                    <tr>
+                        <td>WPA2</td>
+                        <td>Да</td>
+                        <td>50 мин</td>
+                        <td>Средняя</td>
+                        <td>Зависит от пароля</td>
+                    </tr>
+                    <tr>
+                        <td>WPA3</td>
+                        <td>Нет</td>
+                        <td>—</td>
+                        <td>Высокая</td>
+                        <td>Требует правильной конфигурации</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Рекомендации -->
+        <section class="recommendations animated fadeIn">
+            <h3>Рекомендации</h3>
+            <ul>
+                <li>Не использовать WEP из-за его уязвимости.</li>
+                <li>Для WPA2 применять сложные пароли (12+ символов, буквы, цифры, спецсимволы).</li>
+                <li>Переходить на WPA3 при поддержке оборудования.</li>
+                <li>Обновлять прошивку роутера для устранения уязвимостей.</li>
+            </ul>
+        </section>
+    </main>
+
+    <!-- Футер -->
+    <footer>
+        <p>© 2025 Wi-Fi Security Project | <a href="contact.html">Свяжитесь с нами</a></p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

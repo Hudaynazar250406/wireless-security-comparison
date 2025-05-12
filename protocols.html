@@ -2,13 +2,14 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wi-Fi Security | Протоколы</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/header.css">
-    <link rel="stylesheet" href="css/table.css">
     <link rel="stylesheet" href="css/effects.css">
 </head>
 <body>
+    <!-- Навигация -->
     <header class="main-header parallax">
         <div class="container">
             <h1>Протоколы Wi-Fi</h1>
@@ -19,78 +20,90 @@
                 <a href="tools.html">Инструменты</a>
                 <a href="team.html">Команда</a>
                 <a href="contact.html">Контакты</a>
+                <a href="report.html">Отчет</a>
             </nav>
         </div>
     </header>
 
+    <!-- Основной контент -->
     <main class="container">
         <section class="intro animated fadeIn">
-            <h2>Сравнение протоколов Wi-Fi</h2>
-            <p>Оцените эволюцию протоколов Wi-Fi по безопасности, шифрованию и устойчивости к атакам.</p>
+            <h2>Обзор протоколов Wi-Fi</h2>
+            <p>На этой странице описаны основные протоколы защиты беспроводных сетей Wi-Fi: WEP, WPA2 и WPA3. Каждый из них имеет свои особенности, механизмы работы и известные уязвимости.</p>
         </section>
 
-        <table class="protocol-table animated fadeIn">
-            <tr>
-                <th>Протокол</th>
-                <th>Год</th>
-                <th>Шифрование</th>
-                <th>Безопасность</th>
-                <th>Описание</th>
-            </tr>
-            <tr id="wep">
-                <td>WEP</td>
-                <td>1997</td>
-                <td>RC4</td>
-                <td>❌ Очень низкая</td>
-                <td>Устаревший протокол, уязвимый к FMS и KoreK атакам.</td>
-            </tr>
-            <tr id="wpa">
-                <td>WPA</td>
-                <td>2003</td>
-                <td>TKIP</td>
-                <td>⚠️ Средняя</td>
-                <td>Переходный стандарт, уязвимый к KRACK и атакам на TKIP.</td>
-            </tr>
-            <tr id="wpa2">
-                <td>WPA2</td>
-                <td>2004</td>
-                <td>AES-CCMP</td>
-                <td>✅ Хорошая</td>
-                <td>Надёжный стандарт, но уязвим к PMKID и KRACK без патчей.</td>
-            </tr>
-            <tr id="wpa3">
-                <td>WPA3</td>
-                <td>2018</td>
-                <td>SAE/AES</td>
-                <td>✅ Высокая</td>
-                <td>Современный протокол с защитой от оффлайн атак и SAE.</td>
-            </tr>
-        </table>
+        <!-- Описание протоколов -->
+        <section class="animated fadeIn">
+            <h3>Протоколы защиты Wi-Fi</h3>
 
-        <section class="protocol-details animated slideIn">
-            <h2>Подробности</h2>
-            <div class="detail-card" id="wep-details">
-                <h3>WEP</h3>
-                <p>Слабый инициализационный вектор (IV) и повторное использование ключей делают WEP уязвимым. Инструменты вроде Aircrack-ng могут взломать сеть за минуты.</p>
-            </div>
-            <div class="detail-card" id="wpa-details">
-                <h3>WPA</h3>
-                <p>Использует TKIP для совместимости с WEP-устройствами, но это снижает безопасность. Уязвим к атакам на 4-стороннее рукопожатие.</p>
-            </div>
-            <div class="detail-card" id="wpa2-details">
-                <h3>WPA2</h3>
-                <p>Стандарт с AES, но уязвимости вроде KRACK и PMKID требуют обновлений прошивки.</p>
-            </div>
-            <div class="detail-card" id="wpa3-details">
-                <h3>WPA3</h3>
-                <p>Внедряет Simultaneous Authentication of Equals (SAE) и защиту от подбора паролей.</p>
-            </div>
+            <!-- WEP -->
+            <h4>WEP (Wired Equivalent Privacy)</h4>
+            <p>
+                <strong>История и назначение:</strong> WEP был первым протоколом шифрования для Wi-Fi, представленным в 1997 году. Его цель — обеспечить конфиденциальность данных, эквивалентную проводным сетям.
+            </p>
+            <p>
+                <strong>Механизм работы:</strong> WEP использует алгоритм шифрования RC4. Для шифрования данных применяется ключ (40 или 104 бита), который комбинируется с 24-битным вектором инициализации (IV). IV добавляется к каждому пакету, чтобы избежать повторений.
+            </p>
+            <p>
+                <strong>Особенности:</strong>
+            </p>
+            <ul>
+                <li>Ключи шифрования статичны и редко меняются.</li>
+                <li>IV передается в открытом виде, что упрощает атаки.</li>
+                <li>Поддерживает ключи длиной 64 или 128 бит (включая IV).</li>
+            </ul>
+            <p>
+                <strong>Известные уязвимости:</strong> WEP устарел из-за серьезных недостатков. Короткий IV (24 бита) приводит к его повторному использованию, что позволяет атакующим собирать пакеты и восстанавливать ключ с помощью атак FMS и KoreK. Протокол больше не рекомендуется к использованию.
+            </p>
+
+            <!-- WPA2 -->
+            <h4>WPA2 (Wi-Fi Protected Access 2)</h4>
+            <p>
+                <strong>История и назначение:</strong> WPA2 был представлен в 2004 году как замена WPA и стал стандартом для защиты Wi-Fi сетей. Он основан на стандарте IEEE 802.11i.
+            </p>
+            <p>
+                <strong>Механизм работы:</strong> WPA2 использует алгоритм шифрования AES (Advanced Encryption Standard) в режиме CCMP (Counter Mode with Cipher Block Chaining Message Authentication Code Protocol). Для аутентификации применяется 4-way handshake, который генерирует уникальные сессионные ключи.
+            </p>
+            <p>
+                <strong>Особенности:</strong>
+            </p>
+            <ul>
+                <li>Поддерживает два режима: WPA2-Personal (PSK) для домашних сетей и WPA2-Enterprise для корпоративных сетей с использованием сервера RADIUS.</li>
+                <li>Обеспечивает более высокий уровень безопасности по сравнению с WEP и WPA.</li>
+                <li>Использует динамические ключи, что усложняет атаки.</li>
+            </ul>
+            <p>
+                <strong>Известные уязвимости:</strong> Несмотря на свою надежность, WPA2 имеет уязвимости, такие как атака KRACK (Key Reinstallation Attack), которая позволяет дешифровать трафик, и возможность брутфорса паролей в режиме WPA2-PSK, если пароль слабый.
+            </p>
+
+            <!-- WPA3 -->
+            <h4>WPA3 (Wi-Fi Protected Access 3)</h4>
+            <p>
+                <strong>История и назначение:</strong> WPA3 был представлен в 2018 году как преемник WPA2. Он разработан для устранения недостатков предыдущих протоколов и повышения безопасности Wi-Fi сетей.
+            </p>
+            <p>
+                <strong>Механизм работы:</strong> WPA3 использует протокол SAE (Simultaneous Authentication of Equals), также известный как Dragonfly Key Exchange, который устойчив к оффлайн-атакам. Для шифрования применяется 192-битный режим AES.
+            </p>
+            <p>
+                <strong>Особенности:</strong>
+            </p>
+            <ul>
+                <li>Обеспечивает защиту от оффлайн-брутфорса паролей.</li>
+                <li>Включает функцию Opportunistic Wireless Encryption (OWE) для защиты открытых сетей.</li>
+                <li>Поддерживает два режима: WPA3-Personal и WPA3-Enterprise.</li>
+                <li>Обеспечивает прямую секретность (Forward Secrecy), что защищает данные даже при компрометации ключа.</li>
+            </ul>
+            <p>
+                <strong>Известные уязвимости:</strong> WPA3 более устойчив к атакам, но имеет некоторые проблемы, такие как атака Dragonblood, которая эксплуатирует ошибки реализации SAE. Также WPA3 может быть уязвим, если оборудование настроено на совместимость с WPA2.
+            </p>
         </section>
     </main>
 
+    <!-- Футер -->
     <footer>
         <p>© 2025 Wi-Fi Security Project | <a href="contact.html">Свяжитесь с нами</a></p>
     </footer>
+
     <script src="js/script.js"></script>
 </body>
 </html>
